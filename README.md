@@ -18,11 +18,14 @@ The complete code will be organized and made public later.
 5. tfplot
 
 ### Compile
-1. 
-```cd $PATH_ROOT/libs/box_utils/```
-```python setup.py build_ext --inplace```
-2. ```cd $PATH_ROOT/libs/box_utils/cython_utils```
-```python setup.py build_ext --inplace```
+```
+cd $PATH_ROOT/libs/box_utils/
+python setup.py build_ext --inplace
+```
+```
+cd $PATH_ROOT/libs/box_utils/cython_utils
+python setup.py build_ext --inplace
+```
 
 ## Trained Weights Preparation
 1. please download [resnet50_v1](http://download.tensorflow.org/models/resnet_v1_50_2016_08_28.tar.gz)、[resnet101_v1](http://download.tensorflow.org/models/resnet_v1_101_2016_08_28.tar.gz) pre-trained models on Imagenet, put it to data/pretrained_weights.        
