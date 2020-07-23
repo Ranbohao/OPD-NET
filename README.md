@@ -6,25 +6,23 @@ This project is modified based on [R2CNN_Faster-RCNN_Tensorflow](https://github.
 
 The complete code will be organized and made public later.
 
-
-## Requirements
+## Installation
+### Requirements
 1. tensorflow >= 1.2
 2. cuda8/9.0
 3. python3.6 (anaconda3 recommend)
 4. opencv(cv2)
 5. tfplot
 
-
-## Compile
+### Compile
 cd $PATH_ROOT/libs/box_utils/
 python setup.py build_ext --inplace
 cd $PATH_ROOT/libs/box_utils/cython_utils
 python setup.py build_ext --inplace
 
-## Preparation
-1. pretrained weights
-please download resnet50_v1、resnet101_v1 pre-trained models on Imagenet, put it to data/pretrained_weights.
-2. trained_model
+## Trained Weights Preparation
+1. please download [resnet50_v1](http://download.tensorflow.org/models/resnet_v1_50_2016_08_28.tar.gz)、[resnet101_v1](http://download.tensorflow.org/models/resnet_v1_101_2016_08_28.tar.gz) pre-trained models on Imagenet, put it to data/pretrained_weights.        
+2. please download trained model by this project (we will upload later), and place it in the output/trained_weights.
 
 ## Inference
 1. first modify the INFERENCE_IMAGE_PATH and INFERENCE_SAVE_PATH in the $PATH_ROOT/libs/configs/cfgs.py
