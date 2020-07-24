@@ -56,10 +56,7 @@ python setup.py build_ext --inplace
 ## Comparison
 
 1. comparison with [R2CNN_HEAD_FPN_Tensorflow](https://github.com/yangxue0827/R2CNN_HEAD_FPN_Tensorflow) on prow detection:
-
-
 ![](./comparison-prow.jpg)
 
 2. comparison with R2CNN、R2PN、R-DFPN on ship detection：
-
 ![](./comparison-ship.jpg)
