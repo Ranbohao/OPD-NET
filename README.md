@@ -62,4 +62,4 @@ python setup.py build_ext --inplace
 
 2. comparison with R2CNN、R2PN、R-DFPN on ship detection：
 
-![](https://github.com/Ranbohao/OPD-NET/blob/master/comparison_prow.png)
+![](https://github.com/Ranbohao/OPD-NET/blob/master/comparison_ship.png)
