@@ -45,3 +45,21 @@ python setup.py build_ext --inplace
 ```python inference.py --gpu=0```
 3. in $PATH_ROOT/tools:
 ```python eval.py```
+
+## TODO:
+
+- [ ] data prepare
+- [ ] Training
+
+
+
+## Comparison
+
+1. comparison with [R2CNN_HEAD_FPN_Tensorflow](https://github.com/yangxue0827/R2CNN_HEAD_FPN_Tensorflow) on prow detection:
+
+
+![](.\comparison_prow.png)
+
+2. comparison with R2CNN、R2PN、R-DFPN on ship detection：
+
+![](.\comparison_ship.png)

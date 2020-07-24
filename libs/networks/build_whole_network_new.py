@@ -464,8 +464,7 @@ class DetectionNetwork(object):
             if self.is_training:
                 saliency_mask, pan_loss, binary_map_resize = pan.build_pan_network(inputs=feature_to_cropped,
                                                                                    binary_map=gtboxes_binary_map)
-                if cfgs.DETECT_HEAD:
-                    binary_map_resize = binary_map_resize / 2
+                binary_map_resize = binary_map_resize / 2
                 add_heatmap(saliency_mask, 'img/saliency_mask')
                 add_heatmap(binary_map_resize, 'img/binary_body_map_resize')
                 pan_loss = pan_loss * cfgs.PAN_LOSS_WEIGHT

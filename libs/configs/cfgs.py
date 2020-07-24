@@ -13,7 +13,7 @@ import tensorflow as tf
 
 
 # ------------------------------------------------
-VERSION = 'opd_net_cpcrm_pan_multi_fb_v1'
+VERSION = 'opd_net_cpcrm_pan_fb_v1'
 NET_NAME = 'resnet_v1_101'
 ADD_BOX_IN_TENSORBOARD = True
 # ---------------------------------------- System_config
@@ -28,9 +28,9 @@ SAVE_WEIGHTS_INTE = 10000 #5000
 SUMMARY_PATH = ROOT_PATH + '/output/summary'
 TEST_SAVE_PATH = ROOT_PATH + '/tools/test_result'
 
-INFERENCE_IMAGE_PATH = '/share/rbh/dataset/hrsc/head/Test/bak/AllImages'
-INFERENCE_SAVE_PATH = '/share/rbh/dataset/hrsc/head/Test/bak/eval/new_hrsc_head_dfpn_ori_lr001_2'
-INFERENCE_ANNOTATION_PATH = '/share/rbh/dataset/hrsc/head/Test/bak/Annotations'
+INFERENCE_IMAGE_PATH = 'your image folder'
+INFERENCE_SAVE_PATH = 'infernce save image folder'
+INFERENCE_ANNOTATION_PATH = 'your annotations(xml) folder'
 
 if NET_NAME.startswith('resnet'):
     weights_name = NET_NAME
@@ -134,7 +134,6 @@ USE_CPCRM = True
 RBB_LEN = 6 if USE_CPCRM else 5
 
 USE_PAN = True
-PAN_MORE_CONV = True
 PAN_HEAD_RATIO = 0.25
 PAN_MULTIPLY = True  # True
 

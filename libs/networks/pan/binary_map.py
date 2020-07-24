@@ -15,23 +15,18 @@ def binary_map_generate(img_batch, gtboxes):
     def binary_map_gen(img, boxes):
         temp = np.zeros([img.shape[0], img.shape[1]], np.uint8)
         boxes = boxes.astype(np.int32)
-        if cfgs.DETECT_HEAD:
-            for box in boxes:
-                points = np.array([[box[0], box[1]], [box[2], box[3]], [box[4], box[5]], [box[6], box[7]]], np.int32)
-                head_points = get_head_part_points(
-                    ship_points=points, head_part_ratio=cfgs.PAN_HEAD_RATIO)
-                # print('all', points)
-                points = points.reshape((-1, 1, 2))
-                cv2.fillPoly(temp, [points], 1)
+        
+        for box in boxes:
+            points = np.array([[box[0], box[1]], [box[2], box[3]], [box[4], box[5]], [box[6], box[7]]], np.int32)
+            head_points = get_head_part_points(
+                ship_points=points, head_part_ratio=cfgs.PAN_HEAD_RATIO)
+            # print('all', points)
+            points = points.reshape((-1, 1, 2))
+            cv2.fillPoly(temp, [points], 1)
 
-                head_points = head_points.reshape((-1, 1, 2))
-                cv2.fillPoly(temp, [head_points], 2)
-        else:
-            for box in boxes:
-                points = np.array([[box[0], box[1]], [box[2], box[3]], [box[4], box[5]], [box[6], box[7]]], np.int32)
-                points = points.reshape((-1, 1, 2))
-                cv2.fillPoly(temp, [points], 1)
-
+            head_points = head_points.reshape((-1, 1, 2))
+            cv2.fillPoly(temp, [head_points], 2)
+            
         return temp
 
     img_tensor = tf.squeeze(img_batch, 0)

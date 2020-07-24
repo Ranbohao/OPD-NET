@@ -51,12 +51,9 @@ class PAN(object):
                 saliency_map = slim.conv2d(saliency_map, 256, [1, 1], scope="conv_2")
                 saliency_map = slim.conv2d(saliency_map, 128, [1, 1], scope="conv_3")
                 saliency_map = slim.conv2d(saliency_map, 128, [1, 1], scope="conv_4")
-                if cfgs.DETECT_HEAD:
-                    saliency_map = slim.conv2d(
+                
+                saliency_map = slim.conv2d(
                         feature_map, 3, [1, 1], scope="conv_5")
-                else:
-                    saliency_map = slim.conv2d(
-                        feature_map, 2, [1, 1], scope="conv_5")
                 saliency_after_softmax = tf.nn.softmax(saliency_map)
 
                 return saliency_map, saliency_after_softmax
@@ -71,26 +68,23 @@ class PAN(object):
 
     def pan_predict(self, saliency_after_softmax):
         with tf.variable_scope('pan_predict'):
-            if cfgs.DETECT_HEAD:
-                background_feature = tf.expand_dims(
+            background_feature = tf.expand_dims(
                     saliency_after_softmax[:, :, :, 0], 3)
-                body_feature = tf.expand_dims(saliency_after_softmax[:,:,:,2], 3) 
-                head_feature = tf.expand_dims(saliency_after_softmax[:,:,:,1], 3) 
-                head_feature_1 = slim.conv2d(head_feature, 1, [1, 1], scope="conv_1")
-                head_feature_2 = slim.conv2d(head_feature, 1, [3, 3], scope="conv_2")
-                head_feature_3 = slim.conv2d(head_feature, 1, [1, 3], scope="conv_3")
-                head_feature_4 = slim.conv2d(head_feature, 1, [3, 1], scope="conv_4")
-                head_feature = head_feature_1 + head_feature_2 + head_feature_3 + head_feature_4
-                predict = body_feature + head_feature
+            body_feature = tf.expand_dims(saliency_after_softmax[:,:,:,2], 3) 
+            head_feature = tf.expand_dims(saliency_after_softmax[:,:,:,1], 3) 
+            head_feature_1 = slim.conv2d(head_feature, 1, [1, 1], scope="conv_1")
+            head_feature_2 = slim.conv2d(head_feature, 1, [3, 3], scope="conv_2")
+            head_feature_3 = slim.conv2d(head_feature, 1, [1, 3], scope="conv_3")
+            head_feature_4 = slim.conv2d(head_feature, 1, [3, 1], scope="conv_4")
+            head_feature = head_feature_1 + head_feature_2 + head_feature_3 + head_feature_4
+            predict = body_feature + head_feature
 
-                add_heatmap(body_feature, 'img/body_feature')
-                add_heatmap(head_feature, 'img/head_feature')
-                add_heatmap(background_feature, 'img/background_feature')
-                add_heatmap(predict, 'img/predict_mask')
+            add_heatmap(body_feature, 'img/body_feature')
+            add_heatmap(head_feature, 'img/head_feature')
+            add_heatmap(background_feature, 'img/background_feature')
+            add_heatmap(predict, 'img/predict_mask')
 
-                return predict
-            else:
-                return tf.expand_dims(saliency_after_softmax[:,:,:,1], 3)
+            return predict
         
     def feature_map_sample(self, featrue_map):
         with tf.variable_scope('feature_map_sample'):

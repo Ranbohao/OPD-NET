@@ -80,14 +80,9 @@ def next_batch(dataset_name, batch_size, shortside_len, is_training):
         raise ValueError('dataSet name must be in cfgs.DATASETS')
 
     if is_training:
-        # pattern = os.path.join('/home/share/rbh/20190904/R2/data/tfrecord', dataset_name + '_train*')
-        # pattern = os.path.join(
-        #     '/share/rbh/tfrecord/research_r2/', dataset_name + '_train*')
-        pattern = os.path.join(
-            '/share/rbh/tfrecord/research_r2/head', dataset_name + '_train*')
+        pattern = os.path.join('../data/tfrecord', dataset_name + '_train*')
     else:
         pattern = os.path.join('../data/tfrecord', dataset_name + '_test*')
-        #pattern = os.path.join('/home/ranbohao/test/R-DFPN/data/tfrecord/', dataset_name + '_test*')
 
     print('tfrecord path is -->', os.path.abspath(pattern))
 
