@@ -3,19 +3,21 @@
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import division
-
-import tensorflow as tf
-import tensorflow.contrib.slim as slim
 import os, sys
 sys.path.append("../")
-import numpy as np
-import time
-import argparse
+
 from libs.networks import build_whole_network_new
 from data.io.read_tfrecord import next_batch
 from help_utils import tools
 from libs.box_utils.show_box_in_tensor import *
 from libs.box_utils.boxes_utils import get_horizen_minAreaRectangle
+
+import tensorflow as tf
+import tensorflow.contrib.slim as slim
+import numpy as np
+import time
+import argparse
+
 
 from libs.box_utils.coordinate_convert import back_forward_convert
 if cfgs.USE_PAN:

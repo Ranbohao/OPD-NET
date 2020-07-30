@@ -16,7 +16,7 @@ tf.app.flags.DEFINE_string('image_dir', 'JPEGImages', 'image dir')
 # tf.app.flags.DEFINE_string('xml_dir', 'xml', 'xml dir')
 # tf.app.flags.DEFINE_string('image_dir', 'img', 'image dir')
 tf.app.flags.DEFINE_string('save_name', 'train', 'save name')
-tf.app.flags.DEFINE_string('save_dir', '/share/rbh/tfrecord/research_r2/head_aug_8x/','save name')#../tfrecord/', 'save name')
+tf.app.flags.DEFINE_string('save_dir', '../tfrecord','save name')#../tfrecord/', 'save name')
 tf.app.flags.DEFINE_string('img_format', '.jpg', 'format of image')
 tf.app.flags.DEFINE_string('dataset', cfgs.DATASET_NAME, 'dataset')
 FLAGS = tf.app.flags.FLAGS
